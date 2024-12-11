@@ -1,37 +1,58 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
 const WhyChooseSection = () => {
-    const containerVariants = {
-        hidden: { opacity: 0, y: 100 },
-        visible: {
-            opacity: 1,
-            y: 0,
-            transition: { duration: 1 },
-        },
+    const [currentImage, setCurrentImage] = useState(0);
+
+    // Image list
+    const images = [
+        "https://londonorganicbeauty.com/cdn/shop/articles/Natural_Beauty_Products_2.jpg?v=1650521620",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSxFLkhELCuQrdCNY9EAbro6QddOpaoOhd38Q&s",
+        "https://static.israel21c.org/www/uploads/2019/02/main-pic-8-1520x855.jpg",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9VZEbiCgb8vPApOGPuW0J50WDRYqney4bXw&s",
+        "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4jMjB9N_zaz_QPFFbhFpZtBK0rtzJVsO9NQ&s",
+    ];
+
+    // Automatically change image every 3 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentImage((prev) => (prev + 1) % images.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, [images.length]);
+
+    const imageVariants = {
+        enter: { opacity: 0 },
+        center: { opacity: 1, transition: { duration: 2 } },
+        exit: { opacity: 0, transition: { duration: 2 } },
     };
 
     return (
-        <motion.div
-            className="container mx-auto -mt-20 px-6"
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3 }}
-            variants={containerVariants}
-        >
-            <div className="flex flex-col lg:flex-row items-center bg-calm-green-100/60 rounded-lg shadow-xl overflow-hidden">
+        <div className="container mx-auto -mt-20 ">
+            <div className="flex flex-col px-5 lg:flex-row items-center bg-calm-green-100/60 rounded-lg shadow-xl overflow-hidden">
                 {/* Left Image Section */}
-                <div className="lg:w-1/2">
-                    <img
-                        src="https://londonorganicbeauty.com/cdn/shop/articles/Natural_Beauty_Products_2.jpg?v=1650521620"
-                        alt="Natural Beauty Products"
-                        className="w-full h-ful p-5 object-cover rounded-[2.5rem]"
-                    />
+                <div className="lg:w-1/2 rounded-lg relative h-64 sm:h-96 overflow-hidden">
+                    <AnimatePresence initial={false}>
+                        <motion.div
+                            key={currentImage}
+                            variants={imageVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            className="absolute top-0 left-0 w-full h-full"
+                            style={{
+                                backgroundImage: `url(${images[currentImage]})`,
+                                backgroundSize: "cover",
+                                backgroundPosition: "center",
+                            }}
+                        ></motion.div>
+                    </AnimatePresence>
                 </div>
 
                 {/* Right Text Section */}
                 <div className="lg:w-1/2 p-8">
-                    <h2 className="text-3xl roboto-slab text-calm-green-700 mb-4">
+                    <h2 className="text-3xl font-bold text-center font-natural text-calm-green-700 mb-4">
                         Why Choose Natural Ayurvedic Products?
                     </h2>
                     <p className="text-lg text-gray-700 leading-relaxed">
@@ -60,7 +81,7 @@ const WhyChooseSection = () => {
                     </button>
                 </div>
             </div>
-        </motion.div>
+        </div>
     );
 };
 
