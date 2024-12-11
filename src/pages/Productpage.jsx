@@ -13,7 +13,7 @@ const ProductPage = () => {
         image: `/images/product-img${(index % 3) + 1}.jpg`, // Use 3 rotating images for demo
     }));
 
-    const itemsPerPage = 6; // Items per page
+    const itemsPerPage = 8; // Items per page
     const [currentPage, setCurrentPage] = useState(1);
 
     // Calculate total pages
