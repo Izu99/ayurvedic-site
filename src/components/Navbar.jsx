@@ -8,7 +8,7 @@ const Navbar = () => {
         <div className="container mx-auto flex items-center rounded-lg px-10 py-5 justify-between">
             {/* Logo with fade-in animation */}
             <motion.img
-                className="w-40"
+                className="w-48"
                 src="/images/logo.png"
                 alt="logo"
                 initial={{ opacity: 0 }} // Start with invisible

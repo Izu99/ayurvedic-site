@@ -21,12 +21,47 @@ const ProductPage = () => {
     const [currentPage, setCurrentPage] = useState(1);
     const [filterCategory, setFilterCategory] = useState("");
     const [filterPrice, setFilterPrice] = useState("");
+    const [filterRating, setFilterRating] = useState("");
+    const [sortOption, setSortOption] = useState("");
 
-    // Calculate total pages
-    const totalPages = Math.ceil(products.length / itemsPerPage);
+    // Apply filters and sorting
+    let filteredProducts = products;
 
-    // Get paginated products
-    const paginatedProducts = products.slice(
+    // Apply category filter
+    if (filterCategory) {
+        filteredProducts = filteredProducts.filter(
+            (product) => product.category === filterCategory
+        );
+    }
+
+    // Apply price filter
+    if (filterPrice) {
+        const [minPrice, maxPrice] = filterPrice.split("-").map(Number);
+        filteredProducts = filteredProducts.filter((product) => {
+            const price = parseInt(product.price.slice(1), 10); // Remove '$' symbol
+            return price >= minPrice && (!maxPrice || price <= maxPrice);
+        });
+    }
+
+    // Apply rating filter
+    if (filterRating === "4+") {
+        filteredProducts = filteredProducts.filter(
+            (product) => product.rating >= 4
+        );
+    } else if (filterRating === "3+") {
+        filteredProducts = filteredProducts.filter(
+            (product) => product.rating >= 3
+        );
+    }
+
+    // Apply sorting (Most Bought)
+    if (sortOption === "most-bought") {
+        filteredProducts = filteredProducts.sort((a, b) => b.buys - a.buys);
+    }
+
+    // Pagination
+    const totalPages = Math.ceil(filteredProducts.length / itemsPerPage);
+    const paginatedProducts = filteredProducts.slice(
         (currentPage - 1) * itemsPerPage,
         currentPage * itemsPerPage
     );
@@ -72,6 +107,22 @@ const ProductPage = () => {
                         <option value="50+">$50+</option>
                     </select>
                 </div>
+
+                {/* Rating Filter */}
+                <div className="mb-4">
+                    <h4 className="font-semibold text-calm-green-600">
+                        Rating
+                    </h4>
+                    <select
+                        className="w-full p-2 mt-2 border rounded-md"
+                        value={filterRating}
+                        onChange={(e) => setFilterRating(e.target.value)}
+                    >
+                        <option value="">All Ratings</option>
+                        <option value="4+">4 Stars & Above</option>
+                        <option value="3+">3 Stars & Above</option>
+                    </select>
+                </div>
             </div>
 
             <div className="flex-1">
@@ -88,15 +139,16 @@ const ProductPage = () => {
                     <div className="flex items-center space-x-4">
                         <select
                             className="p-2 border rounded-md"
-                            onChange={(e) => setFilterPrice(e.target.value)}
+                            onChange={(e) => setSortOption(e.target.value)}
                         >
-                            <option value="">Sort by Price</option>
+                            <option value="">Sort by</option>
                             <option value="price-asc">
                                 Price: Low to High
                             </option>
                             <option value="price-desc">
                                 Price: High to Low
                             </option>
+                            <option value="most-bought">Most Bought</option>
                         </select>
                     </div>
                 </div>

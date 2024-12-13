@@ -45,66 +45,27 @@ const ContactPage = () => {
 
     return (
         <div className="p-8 bg-light-cream">
-            <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-lg p-6">
-                {/* Company Details */}
-                <div className="mb-12">
-                    <h2 className="text-4xl text-calm-green-700 text-center font-bold mb-6">
-                        Contact Us
-                    </h2>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                        <div className="flex items-center">
-                            <FaMapMarkerAlt
-                                size={24}
-                                className="text-calm-green-500 mr-4"
-                            />
-                            <p>123 Greenway Lane, Nature City, Earth 12345</p>
-                        </div>
-                        <div className="flex items-center">
-                            <FaPhoneAlt
-                                size={24}
-                                className="text-calm-green-500 mr-4"
-                            />
-                            <p>+123 456 7890</p>
-                        </div>
-                        <div className="flex items-center">
-                            <FaEnvelope
-                                size={24}
-                                className="text-calm-green-500 mr-4"
-                            />
-                            <p>support@ayurveda.com</p>
-                        </div>
-                    </div>
-                    <div className="flex justify-center space-x-6 mt-6">
-                        <a
-                            href="https://facebook.com"
-                            className="text-calm-green-500 hover:text-calm-green-700"
-                        >
-                            <FaFacebookF size={28} />
-                        </a>
-                        <a
-                            href="https://instagram.com"
-                            className="text-calm-green-500 hover:text-calm-green-700"
-                        >
-                            <FaInstagram size={28} />
-                        </a>
-                        <a
-                            href="https://linkedin.com"
-                            className="text-calm-green-500 hover:text-calm-green-700"
-                        >
-                            <FaLinkedin size={28} />
-                        </a>
-                    </div>
+            {" "}
+            <h2 className="text-center text-4xl font-bold text-calm-green-700 mb-8">
+                Contact Us
+            </h2>{" "}
+            <div className="max-w-6xl mx-auto bg-white rounded-lg shadow-2xl p-6 flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
+                {" "}
+                {/* Left Image Section */}{" "}
+                <div className="md:w-2/3">
+                    {" "}
+                    <img
+                        src="https://images.pexels.com/photos/23511158/pexels-photo-23511158/free-photo-of-herbs-salves-in-jars-with-aloe-vera-flowers.jpeg?auto=compress&cs=tinysrgb&w=600"
+                        alt="Map background"
+                        className="w-full h-5/6 object-cover mt-10 rounded-2xl shadow-md"
+                    />
                 </div>
-
-                {/* Contact Form */}
-                <form
-                    onSubmit={handleSubmit}
-                    className="grid grid-cols-1 md:grid-cols-2 gap-6"
-                >
-                    <div className="col-span-1">
+                {/* Contact Form Section */}
+                <form onSubmit={handleSubmit} className="md:w-2/3 space-y-6 px-2 py-10 ">
+                    <div className="flex flex-col">
                         <label
                             htmlFor="name"
-                            className="block text-calm-green-700 font-semibold"
+                            className="text-calm-green-700 font-semibold mb-2"
                         >
                             Name <span className="text-red-500">*</span>
                         </label>
@@ -114,14 +75,14 @@ const ContactPage = () => {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            className="w-full mt-2 p-3 border border-calm-green-300 rounded-md"
+                            className="p-3 border border-calm-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-calm-green-500"
                             required
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div className="flex flex-col">
                         <label
                             htmlFor="email"
-                            className="block text-calm-green-700 font-semibold"
+                            className="text-calm-green-700 font-semibold mb-2"
                         >
                             Email <span className="text-red-500">*</span>
                         </label>
@@ -131,14 +92,14 @@ const ContactPage = () => {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            className="w-full mt-2 p-3 border border-calm-green-300 rounded-md"
+                            className="p-3 border border-calm-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-calm-green-500"
                             required
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div className="flex flex-col">
                         <label
                             htmlFor="phone"
-                            className="block text-calm-green-700 font-semibold"
+                            className="text-calm-green-700 font-semibold mb-2"
                         >
                             Phone
                         </label>
@@ -148,13 +109,13 @@ const ContactPage = () => {
                             name="phone"
                             value={formData.phone}
                             onChange={handleChange}
-                            className="w-full mt-2 p-3 border border-calm-green-300 rounded-md"
+                            className="p-3 border border-calm-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-calm-green-500"
                         />
                     </div>
-                    <div className="col-span-1">
+                    <div className="flex flex-col">
                         <label
                             htmlFor="subject"
-                            className="block text-calm-green-700 font-semibold"
+                            className="text-calm-green-700 font-semibold mb-2"
                         >
                             Subject
                         </label>
@@ -164,13 +125,13 @@ const ContactPage = () => {
                             name="subject"
                             value={formData.subject}
                             onChange={handleChange}
-                            className="w-full mt-2 p-3 border border-calm-green-300 rounded-md"
+                            className="p-3 border border-calm-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-calm-green-500"
                         />
                     </div>
-                    <div className="col-span-2">
+                    <div className="flex flex-col">
                         <label
                             htmlFor="message"
-                            className="block text-calm-green-700 font-semibold"
+                            className="text-calm-green-700 font-semibold mb-2"
                         >
                             Message <span className="text-red-500">*</span>
                         </label>
@@ -180,24 +141,47 @@ const ContactPage = () => {
                             value={formData.message}
                             onChange={handleChange}
                             rows="6"
-                            className="w-full mt-2 p-3 border border-calm-green-300 rounded-md"
+                            className="p-3 border border-calm-green-300 rounded-md focus:outline-none focus:ring-2 focus:ring-calm-green-500"
                             required
                         />
                     </div>
-                    <div className="col-span-2">
-                        <button
-                            type="submit"
-                            className="w-full bg-calm-green-500 text-white py-3 rounded-md hover:bg-calm-green-600 transition-colors duration-300"
-                        >
-                            Send Message
-                        </button>
-                    </div>
+                    <button
+                        type="submit"
+                        className="w-full bg-calm-green-500 text-white py-3 rounded-md hover:bg-calm-green-600 transition-colors duration-300"
+                    >
+                        Send Message
+                    </button>
                 </form>
                 {formMessage && (
                     <div className="mt-4 text-center text-calm-green-600">
                         {formMessage}
                     </div>
                 )}
+            </div>
+            {/* Contact Details Section */}
+            <div className="flex flex-col my-10 items-center space-y-6">
+                <div className="flex items-center space-x-4">
+                    <FaMapMarkerAlt size={24} className="text-calm-green-500" />
+                    <p className="text-calm-green-600">
+                        123 Greenway Lane, Nature City, Earth 12345
+                    </p>
+                </div>
+                <div className="flex items-center space-x-4">
+                    <FaEnvelope size={24} className="text-calm-green-500" />
+                    <p className="text-calm-green-600">support@ayurveda.com</p>
+                </div>
+            </div>
+            {/* Map Section */}
+            <div className="mt-10 w-full h-64">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m10!1m8!1m3!1d16194.322250269628!2d79.91066605802077!3d6.902047906830291!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sen!2slk!4v1734079150786!5m2!1sen!2slk"
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    allowFullScreen=""
+                    loading="lazy"
+                    className="rounded-lg shadow-md"
+                ></iframe>
             </div>
         </div>
     );
