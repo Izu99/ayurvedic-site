@@ -5,6 +5,8 @@ import Footer from "./components/Footer";
 import Homepage from "./pages/Homepage";
 import ProductPage from "./pages/Productpage";
 import ProductDetailPage from "./pages/ProductDetailspage";
+import CartPage from "./pages/Cartpage";
+import ContactPage from "./pages/Contactpage";
 
 const App = () => {
     return (
@@ -18,6 +20,8 @@ const App = () => {
                         path="/product/:productId"
                         element={<ProductDetailPage />}
                     />
+                    <Route path="/cart" element={<CartPage />} />
+                    <Route path="/contact" element={<ContactPage />} />
                 </Routes>
                 <Footer />
             </div>

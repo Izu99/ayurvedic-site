@@ -48,7 +48,7 @@ const Navbar = () => {
                     whileHover={{ scale: 1.1, color: "#2b8a3e" }}
                     transition={{ duration: 0.3 }}
                 >
-                    About Us
+                    <a href="/contact"> About Us</a>
                 </motion.li>
             </ul>
 
@@ -58,7 +58,9 @@ const Navbar = () => {
                 whileHover={{ scale: 1.2, color: "#2b8a3e" }} // Cart icon scaling and color change
                 transition={{ duration: 0.3 }}
             >
-                <AiOutlineShoppingCart />
+                <a href="/cart">
+                    <AiOutlineShoppingCart />
+                </a>
             </motion.div>
         </div>
     );

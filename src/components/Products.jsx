@@ -10,6 +10,9 @@ const FeaturedProducts = () => {
                 "Pure and natural turmeric powder, perfect for cooking.",
             price: "$15",
             image: "/images/product-img1.jpg",
+            rating: 4.8, // Rating from 1 to 5
+            reviews: 120, // Number of reviews
+            buys: 500, // Number of purchases
         },
         {
             id: 2,
@@ -17,6 +20,9 @@ const FeaturedProducts = () => {
             description: "Nourishing herbal hair oil for healthy hair.",
             price: "$20",
             image: "/images/product-img2.jpg",
+            rating: 4.8, // Rating from 1 to 5
+            reviews: 120, // Number of reviews
+            buys: 500, // Number of purchases
         },
         {
             id: 3,
@@ -24,6 +30,9 @@ const FeaturedProducts = () => {
             description: "Hydrating face cream with natural ingredients.",
             price: "$25",
             image: "/images/product-img3.jpg",
+            rating: 4.8, // Rating from 1 to 5
+            reviews: 120, // Number of reviews
+            buys: 500, // Number of purchases
         },
     ];
 
